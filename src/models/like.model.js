@@ -17,10 +17,9 @@ const likeSchema = new Schema(
     likedBy: {
       type: Schema.Types.ObjectId,
       ref: "User",
-      required: true,
     },
   },
-  { timestamps: true } // Automatically handles createdAt and updatedAt
+  { timestamps: true }
 );
 
 export const Like = mongoose.model("Like", likeSchema);

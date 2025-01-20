@@ -2,10 +2,13 @@ import mongoose, { Schema } from "mongoose";
 
 const playlistSchema = new Schema(
   {
-    owner: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-     
+    name: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
     },
     videos: [
       {
@@ -13,17 +16,12 @@ const playlistSchema = new Schema(
         ref: "Video",
       },
     ],
-    name: {
-      type: String,
-      required: true,
-      
-    },
-    description: {
-      type: String,
-      trim: true,
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
   },
-  { timestamps: true } // Automatically handles createdAt and updatedAt
+  { timestamps: true }
 );
 
 export const Playlist = mongoose.model("Playlist", playlistSchema);
